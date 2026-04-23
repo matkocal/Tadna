@@ -1,2 +1,2 @@
 # Tadna
-Raw data handler — made by researchers, for researchers
+Raw data handler — a scientific tool.
