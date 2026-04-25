@@ -1,3 +1,10 @@
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+
+
+
 // Functionality 1. - read CSV file and prints a summary.
 // =======================================================
 
