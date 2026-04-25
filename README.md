@@ -55,7 +55,7 @@ You will be prompted to enter species, sex and body mass before the summary tabl
 ## Output Example
 
 ```
-Species : Myodes glareolus
+Species : Clethrionomys glareolus
 Sex     : M
 Mass    : 18.3 g
 
