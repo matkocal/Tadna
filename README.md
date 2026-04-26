@@ -2,16 +2,17 @@
 
 **Raw data handler — a scientific tool**
 
-Tadna is an open-source scientific data tool built in C# for field researchers who need simple, no-nonsense data processing. Load your raw field data, enter metadata, and get clean summaries instantly.
+Tadna is an open-source scientific data tool built in C# for field researchers who need simple, no-nonsense data processing. Load your raw field data, enter metadata, and get clean summaries instantly. All data is stored persistently in a local SQLite database.
 
 ---
 
-## Current Features (Phase 1)
+## Features
 
 - Load bite force CSV files recorded in the field
 - Enter animal metadata (species, sex, body mass)
 - Display full bite-by-bite table with peak force, duration and timestamp
 - Automatic statistics: Max, Min, Mean, N bites
+- Persistent SQLite database — all sessions stored locally, survive between runs
 
 ---
 
@@ -48,14 +49,14 @@ cd Tadna
 dotnet run
 ```
 
-You will be prompted to enter species, sex and body mass before the summary table is displayed.
+You will be prompted to enter species, sex and body mass before the summary table is displayed. Data is saved automatically to `tadna.db`.
 
 ---
 
 ## Output Example
 
 ```
-Species : Clethrionomys glareolus
+Species : Myodes glareolus
 Sex     : M
 Mass    : 18.3 g
 
@@ -71,9 +72,30 @@ Max    71.02
 Min    45.32
 Mean   60.81
 N      5
+
+Saved to database. Session ID: 1
 ```
 
 ---
+
+## Database
+
+Tadna stores all sessions in a local SQLite file (`tadna.db`). Useful commands:
+
+```bash
+# view all sessions
+sqlite3 tadna.db "SELECT * FROM Sessions;"
+
+# view all bites for session 1
+sqlite3 tadna.db "SELECT * FROM Bites WHERE SessionId = 1;"
+
+# delete everything
+sqlite3 tadna.db "DELETE FROM Bites; DELETE FROM Sessions;"
+```
+
+---
+
+
 
 ## License
 
